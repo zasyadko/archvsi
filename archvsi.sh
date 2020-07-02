@@ -31,7 +31,7 @@ if [ ! "$IN" = "" ]; then
 fi
 
 MYUSERPASSWORD="1234567890"
-echo "Enter user name: (default '$MYUSERPASSWORD')"
+echo "Enter user password: (default '$MYUSERPASSWORD')"
 read IN
 if [ ! "$IN" = "" ]; then
    MYUSERPASSWORD=$IN
