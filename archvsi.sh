@@ -5,7 +5,7 @@
 
 echo "Use wi-fi? (y/n)"
 read IN
-if [ ! "$IN" = "y" ]; then
+if [ "$IN" = "y" ]; then
     for intf in /sys/class/net/*; do
         sudo ifconfig `basename $intf` down
     done
