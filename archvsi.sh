@@ -57,7 +57,8 @@ mkfs.ext4 $SYSDEV
 
 mount $SYSDEV /mnt
 mkdir /mnt/boot
-mount $BOOTDEV /mnt/boot
+mkdir /mnt/boot/efi
+mount $BOOTDEV /mnt/boot/efi
 
 # -----------------------------------------------------------------------------
 # Get actual mirrorlist
