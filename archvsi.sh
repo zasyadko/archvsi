@@ -1,18 +1,6 @@
 #!/bin/bash
 
 # -----------------------------------------------------------------------------
-# WI-FI
-
-echo "Use wi-fi? (y/n)"
-read IN
-if [ "$IN" = "y" ]; then
-    for intf in /sys/class/net/*; do
-        sudo ifconfig `basename $intf` down
-    done
-    wifi-menu
-fi
-
-# -----------------------------------------------------------------------------
 # Init params
 
 DRIVE="/dev/sda"
