@@ -1,37 +1,30 @@
-## Welcome to GitHub Pages
+## About
+This script was originally created for personal use. Performs a basic installation of Arch Linux on a computer using an EFI bootloader. Requires a whole disk for the system, which will be divided into boot and primary partitions.
 
-You can use the [editor on GitHub](https://github.com/zasyadko/archvsi/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## How to use
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+1. Get latest Arch Linux image from https://www.archlinux.org/download/
+2. Boot with a bootable device, how to do it is described here https://wiki.archlinux.org/index.php/USB_flash_installation_medium
+3. Download script from https://zasyadko.github.io/archvsi/archvsi.sh
+```sh
+wget https://zasyadko.github.io/archvsi/archvsi.sh
 ```
+4. You can change the list of packages to install inside the script in the "Install packages" section
+```sh
+# -----------------------------------------------------------------------------
+# Install packages
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/zasyadko/archvsi/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+arch-chroot /mnt <<EOF
+pacman -Sy --noconfirm base-devel bash-completion chromium efibootmgr gimp git gnome gnome-extra gnome-tweaks go graphviz grub libreoffice-fresh lshw mariadb nano nmon nodejs npm ntfs-3g openssh os-prober php remmina sudo transmission-gtk unrar vlc
+EOF
+```
+5. Start a script
+```sh
+sh archvsi.sh
+```
+6. Follow the instructions on the screen
+7. After finishing the installation process, restart your computer
+```sh
+shutdown -r now
+```
+Profit!
