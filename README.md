@@ -11,7 +11,6 @@ wget https://zasyadko.github.io/archvsi/archvsi.sh
 ```
 4. You can change the list of packages to install inside the script in the "Install packages" section
 ```sh
-# -----------------------------------------------------------------------------
 # Install packages
 
 arch-chroot /mnt <<EOF
