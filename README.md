@@ -11,8 +11,6 @@ wget https://zasyadko.github.io/archvsi/archvsi.sh
 ```
 4. You can change the list of packages to install inside the script in the "Install packages" section
 ```sh
-# Install packages
-
 arch-chroot /mnt <<EOF
 pacman -Sy --noconfirm base-devel bash-completion chromium efibootmgr gimp git gnome gnome-extra gnome-tweaks go graphviz grub libreoffice-fresh lshw mariadb nano nmon nodejs npm ntfs-3g openssh os-prober php remmina sudo transmission-gtk unrar vlc
 EOF
