@@ -97,11 +97,20 @@ EOF
 # Install packages
 
 arch-chroot /mnt <<EOF
-pacman -Sy --noconfirm base-devel bash-completion xf86-video-amd xf86-video-nouveau xf86-video-vesa mesa lib32-mesa htop chromium darktable discord telegram-desktop efibootmgr gimp git gnome gnome-extra gnome-tweaks go graphviz grub libreoffice-fresh lshw mariadb nano nmon nodejs npm ntfs-3g openssh os-prober php remmina sudo transmission-gtk unrar vlc
+pacman -Sy --noconfirm base-devel bash-completion xf86-video-amd xf86-video-nouveau xf86-video-vesa mesa lib32-mesa htop chromium darktable discord telegram-desktop efibootmgr gimp git gnome gnome-extra gnome-tweaks go graphviz grub libreoffice-fresh lshw mariadb nano nmon nodejs npm ntfs-3g openssh os-prober php remmina sudo transmission-gtk unrar vlc pulseaudio-bluetooth
+EOF
+
+# -----------------------------------------------------------------------------
+# Bluetooth modules
+
+arch-chroot /mnt <<EOF
+grep -qxF 'load-module module-bluetooth-policy' /etc/pulse/system.pa || echo 'load-module module-bluetooth-policy' >> /etc/pulse/system.pa
+grep -qxF 'load-module module-bluetooth-discover' /etc/pulse/system.pa || echo 'load-module module-bluetooth-discover' >> /etc/pulse/system.pa
 EOF
 
 # -----------------------------------------------------------------------------
 # Create user
+
 arch-chroot /mnt <<EOF
 useradd -m $MYUSERNAME
 echo "$MYUSERNAME:$MYUSERPASSWORD" | chpasswd
