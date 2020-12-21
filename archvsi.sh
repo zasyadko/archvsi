@@ -97,7 +97,7 @@ EOF
 # Install packages
 
 arch-chroot /mnt <<EOF
-pacman -Sy --noconfirm base-devel bash-completion xf86-video-amd xf86-video-nouveau xf86-video-vesa mesa lib32-mesa htop chromium darktable discord telegram-desktop efibootmgr gimp git gnome gnome-extra gnome-tweaks go graphviz grub libreoffice-fresh lshw mariadb nano nmon nodejs npm ntfs-3g openssh os-prober php remmina sudo transmission-gtk unrar vlc pulseaudio-bluetooth
+pacman -Sy --noconfirm base-devel bash-completion xf86-video-amd xf86-video-vesa mesa lib32-mesa htop chromium darktable discord telegram-desktop efibootmgr gimp git gnome gnome-extra gnome-tweaks go graphviz grub libreoffice-fresh lshw mariadb nano nmon nodejs npm ntfs-3g openssh os-prober php sudo transmission-gtk unrar vlc pulseaudio-bluetooth
 EOF
 
 # -----------------------------------------------------------------------------
