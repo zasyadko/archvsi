@@ -109,6 +109,16 @@ grep -qxF 'load-module module-bluetooth-discover' /etc/pulse/system.pa || echo '
 EOF
 
 # -----------------------------------------------------------------------------
+# Audio settings
+
+arch-chroot /mnt <<EOF
+echo 'default-sample-format = float32le' >> /etc/pulse/daemon.conf
+echo 'default-sample-rate = 48000' >> /etc/pulse/daemon.conf
+echo 'alternate-sample-rate = 44100' >> /etc/pulse/daemon.conf
+echo 'resample-method = speex-float-10' >> /etc/pulse/daemon.conf
+EOF
+
+# -----------------------------------------------------------------------------
 # Create user
 
 arch-chroot /mnt <<EOF
