@@ -13,8 +13,6 @@ if [ ! "$IN" = "" ]; then
     fi
     DRIVE=$IN
 fi
-BOOTDEV=$(fdisk -l $DRIVE | grep '^/dev' -m1 | tail -n1 | cut -d ' ' -f1)
-SYSDEV=$(fdisk -l $DRIVE | grep '^/dev' -m2 | tail -n1 | cut -d ' ' -f1)
 
 NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 MYHOSTNAME=$NEW_UUID
@@ -47,9 +45,12 @@ timedatectl set-ntp true
 # Create partitions
 
 (echo g; echo n; echo 1; echo ""; echo "+512M"; echo t; echo 1; echo w) | fdisk $DRIVE --wipe always
-mkfs.fat -F32 $BOOTDEV
-
 (echo n; echo 2; echo ""; echo ""; echo w) | fdisk $DRIVE --wipe always
+
+BOOTDEV=$(fdisk -l $DRIVE | grep '^/dev' -m1 | tail -n1 | cut -d ' ' -f1)
+SYSDEV=$(fdisk -l $DRIVE | grep '^/dev' -m2 | tail -n1 | cut -d ' ' -f1)
+
+mkfs.fat -F32 $BOOTDEV
 mkfs.ext4 $SYSDEV
 
 # -----------------------------------------------------------------------------
